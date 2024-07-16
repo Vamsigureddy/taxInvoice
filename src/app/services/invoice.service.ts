@@ -33,6 +33,7 @@ export class InvoiceService {
 
 
 private baseUrl = 'http://127.0.0.1:8000/api/invoices/';
+private apiUrl = 'http://127.0.0.1:8000/api/callback-requests/';
 
 constructor(private http: HttpClient) { }
 
@@ -43,5 +44,8 @@ getAllInvoices(): Observable<Invoice[]> {
 saveInvoice(invoiceData: any): Observable<any> {
   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   return this.http.post(this.baseUrl, invoiceData, { headers });
+}
+createCallbackRequest(data: any): Observable<any> {
+  return this.http.post(this.apiUrl, data);
 }
 }
