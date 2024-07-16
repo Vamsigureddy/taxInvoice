@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AngularComponent implements OnInit {
   callbackForm: FormGroup;
-  submitted: boolean = true;
+  submitted: boolean = false;
 
   constructor(private fb: FormBuilder, private  router:Router) {
     
