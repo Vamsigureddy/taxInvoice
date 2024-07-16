@@ -1,0 +1,124 @@
+<div class="invoice-box" style="margin-top: 2rem;">
+  <table cellpadding="0" cellspacing="0">
+    <tr class="top_rw">
+      <td colspan="2">
+        <i class="bi bi-arrow-left-circle" ></i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16" (click)="revarce()">
+          <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+        </svg>
+        <h2 class="text-primary text-center">Tax invoice/Bill of Supply/Cash memo</h2>
+        <div class=" text-end">
+          <input type="button" class="btn btn-primary me-2" value="History" (click)="userHistory()">
+        </div>
+      </td>
+    </tr>
+    <div class="wrapper">
+      <div class="row">
+        <div class="col">
+          <label for="otherInput">Full Name</label>
+          <input type="text" class="form-control border-bottom" id="otherInput" [(ngModel)]="fullName">
+        </div>
+        <div class="col">
+          <label for="dateofbirth">Date </label>
+          <input type="date" class="form-control" name="dateofbirth" id="dateofbirth" [(ngModel)]="dateOfBirth">
+        </div>    
+      </div>
+    </div>
+    <tr class="information">
+      <td colspan="3">
+        <table>
+          <tr>
+            <div class="row">
+              <div class="col-xs-12">
+                <form class="form-horizontal" role="form">
+                  <div class="form-group" style="margin-top: 1rem; margin-bottom: 1rem;">
+                    <label for="inputAddressLine2" class="col-sm-2 control-label">Address</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputAddressLine2" name="address-line2" placeholder="Address Line" [(ngModel)]="addressLine2">
+                    </div>
+                  </div>           
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group" style="margin-top: 1rem; margin-bottom: 1rem;">
+                        <input type="text" class="form-control" id="inputCityTown" name="city-town" placeholder="City / Town" [(ngModel)]="cityTown">
+                      </div>
+                    </div>
+                    <div class="col-sm-4" style="margin-top: 1rem; margin-bottom: 1rem;">
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="inputStateProvinceRegion" name="state-province-region" placeholder="State / Province / Region" [(ngModel)]="stateProvinceRegion">
+                      </div>
+                    </div>
+                    <div class="col-sm-4" style="margin-top: 1rem; margin-bottom: 1rem;">
+                      <input type="text" class="form-control" id="inputZipPostalCode" name="zip-postal-code" placeholder="Zip / Postal Code" [(ngModel)]="zipPostalCode">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>     
+          </tr>
+        </table>
+      </td>
+    </tr>      
+  </table>
+
+    <table cellspacing="0px" cellpadding="2px">
+      <tr class="heading" style="background-color: gainsboro;">
+        <th style="width:5%; text-align:center;">sr no</th>
+        <th style="width:25%; text-align:center;">Item</th>
+        <th style="width:10%; text-align:center;">Quantity</th>
+        <th style="width:15%; text-align:center;">Price</th>
+        <th style="width:5%; text-align:center;">Tax Rate</th>
+        <th style="width:15%; text-align:center;">Tax Amount</th>
+        <th style="width:25%; text-align:center;">Total Amount</th>
+      </tr>
+      <tr class="item" *ngFor="let item of items; let i = index">
+        <td style="width:5%; text-align:center;">{{ i + 1 }}</td>
+        <td style="width:25%;">
+          <input type="text" [(ngModel)]="item.item" class="form-control-plaintext" placeholder="Enter item">
+        </td>
+        <td style="width:10%; text-align:center;">
+          <input type="number" [(ngModel)]="item.qty" (ngModelChange)="calculateItemAmounts(item)"
+                 class="form-control-plaintext centered-placeholder" placeholder="Enter qty">
+        </td>
+        <td style="width:10%; text-align:right;">
+          <input type="number" [(ngModel)]="item.price" (ngModelChange)="calculateItemAmounts(item)"
+                 class="form-control-plaintext centered-placeholder" placeholder="Enter price">
+        </td>
+        
+        <td style="width:15%; text-align:right;">{{ item.taxRate }}%</td>
+        <td style="width:15%; text-align:right;">{{ item.taxAmount ? (item.taxAmount | currency:'INR') : '' }}</td>
+        <td style="width:15%; text-align:right;">{{ item.totalAmount ? (item.totalAmount | currency:'INR') : '' }}</td>
+      </tr>
+      <tr>
+        <td colspan="7" style="text-align:right;">
+          <div style="display: inline-flex; align-items: center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" (click)="addItem()" class="bi bi-plus-circle" viewBox="0 0 16 16" style="margin-right: 8px; cursor: pointer;">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16" (click)="removeItem()" style="cursor: pointer;">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+              <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+            </svg>
+          </div>
+        </td>
+      </tr>
+      <tr class="item" *ngIf="items.length">
+        <td style="width:5%;"></td>
+        <td style="width:25%;"><b>Grand Total</b></td>
+        <td style="width:10%; text-align:center;"></td>
+        <td style="width:10%; text-align:right;"></td>
+        <td style="width:15%; text-align:right;"></td>
+        <td style="width:15%; text-align:right;">{{ grandTotalTaxAmount ? (grandTotalTaxAmount | currency:'INR') : '' }}</td>
+        <td style="width:15%; text-align:right;">{{ grandTotalAmount ? (grandTotalAmount | currency:'INR') : '' }}</td>
+      </tr>
+    </table>
+  <tr class="total" *ngIf="grandTotalAmount">
+    <td colspan="8" style="text-align:right;">
+      Total Amount in Words: <b>{{ grandTotalAmountInWords }}</b>
+    </td>
+  </tr>
+        <div class="text-end mt-3">
+          <button class="btn btn-info text-end" (click)="saveData()">NextPage</button>
+        </div>
+</div>

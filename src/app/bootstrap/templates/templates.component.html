@@ -1,0 +1,641 @@
+<ng-container *ngIf="selectedTemplate" [ngTemplateOutlet]="selectedTemplate">
+</ng-container>
+
+<ng-template #customer>
+  <div class="container">
+    <div class="row">
+      <div class="col text-end">
+        <div class="back-link">
+          <!-- <a (click)="backBootstrapMainPage()" class="btn btn-outline-primary"
+          ><i class="bi bi-arrow-return-left"></i> Back</a
+        > -->
+
+          <a (click)="backBootstrapMainPage()" class="btn btn-outline-primary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-return-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"
+              ></path>
+            </svg>
+            Back
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="card h-100">
+          <div class="card-header bg-primary text-white">
+            Customer Registration Page
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="mb-3 row">
+                <label for="name" class="col-sm-3 col-form-label">Name</label>
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Enter your name"
+                  />
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="email" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="Enter your email"
+                  />
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="password" class="col-sm-3 col-form-label"
+                  >Password</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="password"
+                    placeholder="Enter your Password"
+                  />
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="message" class="col-sm-3 col-form-label"
+                  >Message</label
+                >
+                <div class="col-sm-9">
+                  <textarea
+                    class="form-control"
+                    id="message"
+                    rows="4"
+                    placeholder="Enter your personal details"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-9 offset-sm-3">
+                  <button type="submit" class="btn btn-primary btn-block">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="card h-100">
+          <div class="card-header bg-secondary text-white">
+            Customer Registraion Latest Record
+          </div>
+          <div class="card-body">
+            <form>
+              <!-- <div class="mb-2 row">
+                <label class="col-sm-3 col-form-label">Name</label>
+                <p class="">Customer 1</p>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-3 col-form-label">Email</label>
+                <p class="">Email 1</p>
+              </div>
+              <div class="mb-5 row">
+                <label class="col-sm-3 col-form-label">Message</label>
+                <p class="">Customer Message 1</p>
+              </div> -->
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <span class="bullet-icon"></span>
+                  <label class="col-sm-3 col-form-label">Name</label>
+                  <p class="">Customer 1</p>
+                </li>
+                <li class="list-group-item">
+                  <span class="bullet-icon"></span>
+                  <label class="col-sm-3 col-form-label">Email</label>
+                  <p class="">Email 1</p>
+                </li>
+                <li class="list-group-item">
+                  <span class="bullet-icon"></span>
+                  <label class="col-sm-3 col-form-label">Message</label>
+                  <p class="">Customer Message 1</p>
+                </li>
+              </ul>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5"></div>
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <div class="card h-100">
+        <div class="card-header bg-success text-white">
+          Customers Registration History
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>John Doe</td>
+                <td>john@example.com</td>
+                <td>Message is</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Jane Smith</td>
+                <td>jane@example.com</td>
+                <td>Message is</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Michael Johnson</td>
+                <td>michael@example.com</td>
+                <td>Message is</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #customerdetailsform>
+  <div class="container">
+    <div class="row">
+      <div class="col text-end">
+        <div class="back-link">
+          <!-- <a (click)="backBootstrapMainPage()" class="btn btn-outline-primary"
+          ><i class="bi bi-arrow-return-left"></i> Back</a
+        > -->
+
+          <a (click)="backBootstrapMainPage()" class="btn btn-outline-primary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-return-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"
+              ></path>
+            </svg>
+            Back
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h4>Latest Customer Record</h4>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="mb-2 row">
+                <label class="col-sm-3">Name</label>
+                <p class="col-sm-6 lead">Customer 1</p>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-3">Location</label>
+                <p class="col-sm-6 lead">Customer Location 1</p>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-3">Message</label>
+                <p class="col-sm-6 lead">Customer Message 1</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #customerform>
+  madan
+  <div class="container">
+    <div class="row">
+      <div class="col text-end">
+        <div class="back-link">
+          <a (click)="backBootstrapMainPage()" class="btn btn-outline-primary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-return-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"
+              ></path>
+            </svg>
+            Back
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #customerloginform>
+  <div class="container">
+    <div class="row">
+      <div class="col text-end">
+        <div class="back-link">
+          <!-- <a (click)="backBootstrapMainPage()" class="btn btn-outline-primary"
+          ><i class="bi bi-arrow-return-left"></i> Back</a
+        > -->
+
+          <a (click)="backBootstrapMainPage()" class="btn btn-outline-primary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-return-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"
+              ></path>
+            </svg>
+            Back
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">Login Form</div>
+          <div class="card-body">
+            <form>
+              <div class="mb-3 row">
+                <label for="username" class="form-label col-sm-3 col-12"
+                  >Username</label
+                >
+                <div class="col-sm-9 col-12">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    placeholder="Enter your username"
+                  />
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="password" class="form-label col-sm-3 col-12"
+                  >Password</label
+                >
+                <div class="col-sm-9 col-12">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Enter your password"
+                  />
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">
+                Login
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #customerloginform(sidebyside)>
+  <div class="container">
+    <div class="row">
+      <div class="col text-end">
+        <div class="back-link">
+          <!-- <a (click)="backBootstrapMainPage()" class="btn btn-outline-primary"
+          ><i class="bi bi-arrow-return-left"></i> Back</a
+        > -->
+
+          <a (click)="backBootstrapMainPage()" class="btn btn-outline-primary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-return-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"
+              ></path>
+            </svg>
+            Back
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            Customer Registration Page
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="mb-3 row">
+                <label for="name" class="col-sm-3 col-form-label">Name</label>
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Enter your name"
+                  />
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="email" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="Enter your email"
+                  />
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="password" class="col-sm-3 col-form-label"
+                  >Password</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="email"
+                    placeholder="Enter your Password"
+                  />
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="location" class="col-sm-3 col-form-label"
+                  >Email</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="location"
+                    class="form-control"
+                    id="location"
+                    placeholder="Enter your Location"
+                  />
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="message" class="col-sm-3 col-form-label"
+                  >Message</label
+                >
+                <div class="col-sm-9">
+                  <textarea
+                    class="form-control"
+                    id="message"
+                    rows="4"
+                    placeholder="Enter your personal details"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-9 offset-sm-3">
+                  <button type="submit" class="btn btn-primary btn-block">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #customerhistory>
+  <div class="container">
+    <div class="row">
+      <div class="col text-end">
+        <div class="back-link">
+          <!-- <a (click)="backBootstrapMainPage()" class="btn btn-outline-primary"
+          ><i class="bi bi-arrow-return-left"></i> Back</a
+        > -->
+
+          <a (click)="backBootstrapMainPage()" class="btn btn-outline-primary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-return-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"
+              ></path>
+            </svg>
+            Back
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container m-2">
+    <h4>Customer List</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>John Doe</td>
+          <td>john@example.com</td>
+          <td>(123) 456-7890</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Jane Smith</td>
+          <td>jane@example.com</td>
+          <td>(987) 654-3210</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Michael Johnson</td>
+          <td>michael@example.com</td>
+          <td>(555) 123-4567</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
+<ng-template #customerlist>
+  <div class="container">
+    <div class="row">
+      <div class="col text-end">
+        <div class="back-link">
+          <!-- <a (click)="backBootstrapMainPage()" class="btn btn-outline-primary"
+          ><i class="bi bi-arrow-return-left"></i> Back</a
+        > -->
+
+          <a (click)="backBootstrapMainPage()" class="btn btn-outline-primary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-return-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"
+              ></path>
+            </svg>
+            Back
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #menuitems>
+  <div class="container">
+    <div class="row">
+      <div class="col text-end">
+        <div class="back-link">
+          <!-- <a (click)="backBootstrapMainPage()" class="btn btn-outline-primary"
+          ><i class="bi bi-arrow-return-left"></i> Back</a
+        > -->
+
+          <a (click)="backBootstrapMainPage()" class="btn btn-outline-primary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-return-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"
+              ></path>
+            </svg>
+            Back
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-3">
+    <div class="d-flex justify-content-end">
+      <nav class="navbar navbar-light">
+        <div class="container-fluid">
+          <ul class="navbar-nav d-flex flex-row">
+            <li class="nav-item">
+              <a class="nav-link btn btn-primary me-3 p-2" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn btn-primary me-3 p-2" href="#">Order</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn btn-primary me-3 p-2" href="#">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn btn-primary me-3 p-2" href="#"
+                >Instructions</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</ng-template>
+<ng-template #navigationmenu>
+  <div class="container">
+    <div class="row">
+      <div class="col text-end">
+        <div class="back-link">
+          <!-- <a (click)="backBootstrapMainPage()" class="btn btn-outline-primary"
+          ><i class="bi bi-arrow-return-left"></i> Back</a
+        > -->
+
+          <a (click)="backBootstrapMainPage()" class="btn btn-outline-primary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-return-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"
+              ></path>
+            </svg>
+            Back
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

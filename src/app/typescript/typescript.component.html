@@ -1,0 +1,44 @@
+<div class="card h-100 mx-4" style="margin-top: 2rem;">
+  <div class="card-header bg-success text-white sticky-top">
+    <div class="row">
+      <div class="col-10 mt-1" style="text-align: center;">
+        <span>Customers Registration History</span>
+      </div>
+      <div class="col-2">
+        <input type="button" value="Home" class="btn btn-info text-white" routerLink="/tax-form">
+      </div>
+    </div>
+  </div>
+  
+  <div class="card-body overflow-hidden">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="heading" style="background-color: gainsboro;">
+          <th style="width:5%; text-align:center;">Sr No</th>
+          <th style="width:15%; text-align:center;">Date</th>
+          <th style="width:25%; text-align:center;">Name</th>
+          <th style="width:15%; text-align:center;">Tax Amount</th>
+          <th style="width:25%; text-align:center;">Total Amount</th>
+          <th style="width:15%; text-align:center;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let invoice of invoices; let index = index">
+          <td class="text-center">{{ index + 1 }}</td>
+          <td class="text-center">{{ invoice.date_of_birth | date }}</td>
+          <td class="text-center">{{ invoice.full_name }}</td>
+          <td class="text-center">{{ invoice.grand_total_tax_amount | currency:'INR' }}</td>
+          <td class="text-center">{{ invoice.grand_total_amount | currency:'INR' }}</td>
+          <td class="text-center">
+            <button class="btn btn-info me-2" (click)="viewRecord(invoice)">View</button>
+            <button class="btn btn-danger" (click)="deleteRecord(invoice)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div *ngIf="invoices.length === 0">
+    <p>No invoices found.</p>
+  </div>
+</div>

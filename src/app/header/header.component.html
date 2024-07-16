@@ -1,0 +1,117 @@
+<nav class="navbar navbar-expand-lg  fixed-top " style="background-color: aliceblue;">
+  <div class="container-fluid  ">
+    <!-- Company Logo and Navbar Brand -->
+    <div class="navbar-brand d-flex align-items-center">
+      <a class="navbar-brand d-flex align-items-center" href="./index.html">
+        <img
+          src="assets/images/logo.jpg"
+          alt="Company Logo"
+          class="img-fluid me-2"
+        />
+        UPVC Windows
+      </a>
+    </div>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse ms-auto" id="navbarNav">
+      <ul
+        class="navbar-nav ms-auto text-end"
+        style="margin-right: 100px !important"
+      >
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+          Products List
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-wide dropdown-menu-left"
+            aria-labelledby="navbarDropdown"
+          >
+          <li>
+            <a class="dropdown-item" [routerLink]="'articles/html-articles'">Windows</a>
+          </li>
+
+            <li>
+              <a class="dropdown-item" [routerLink]="'articles/angular-articles'">Doors</a>
+            </li>
+          </ul>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="angular-training">Angular</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="javascript-training">Javascript</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="typescript-training">Typescript</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="csharp-training">C#.Net</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="aspnetcore-training">.Net Core</a>
+        </li> -->
+        <!-- <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            More
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-wide dropdown-menu-left"
+            aria-labelledby="navbarDropdown"
+          >
+            <li>
+              <a class="dropdown-item" routerLink="bootstrap-training"
+                >Bootstrap</a
+              >
+            </li>
+
+            <li>
+              <a
+                target="_blank"
+                class="dropdown-item"
+                href="https://misard-htmlclass-employmentrepo.azurewebsites.net/"
+                >Windows</a
+              >
+            </li>
+            <li><a class="dropdown-item" routerLink="sql-training">Door</a></li>
+            <li>
+              <a class="dropdown-item" routerLink="linq-training">LinQ</a>
+            </li>
+            <li><a class="dropdown-item" routerLink="aws-training">AWS</a></li>
+            <li>
+              <a class="dropdown-item" routerLink="azure-training">Azure</a>
+            </li>
+          </ul> 
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/netcore-index.html"
+            ><strong>Sign In</strong></a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

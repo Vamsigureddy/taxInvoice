@@ -1,0 +1,103 @@
+.me-5 {
+    margin-right: 5rem !important;
+}
+.img-fluid{
+    margin-top: 1rem !important;
+
+}
+.gallery-container {
+    overflow-x: scroll;
+    white-space: nowrap;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.gallery-container::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+}
+.gallery-item {
+    display: inline-block;
+    width: 24%;
+    margin-right: 1%;
+}
+.gallery-item img {
+    width: 100%;
+    height: auto;
+}
+.list-group-item {
+    border: none;
+    background-color: transparent;
+}
+.design-need {
+    background: #f2f2f2;
+    padding: 50px 0px;
+}
+.section-heading {
+    position: relative; /* Ensure .section-heading is a positioned element */
+}
+.section-heading h2 {
+    position: relative; /* Ensure the h2 is a positioned element to contain ::before */
+    color: #24518e; /* Text color */
+    font-size: 2.5rem; /* Example font size */
+    margin-bottom: 20px; /* Example margin bottom */
+}
+.section-heading h2::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: -9px;
+    margin: 0;
+    content: "";
+    width: 34px;
+    height: 3px;
+    background: #24518e;
+}
+.section-heading h2 {
+    object-fit: contain;
+    font-family: Poppins;
+    /* font-size: 22px;
+    font-weight: 500; */
+    text-align: left;
+    color: #24518e;
+}
+
+  /* Custom styles for custom-box */
+  .custom-box-content{
+    text-align: left;
+    color: #24518e;
+  }
+  .custom-box {
+    margin: 0px 0px 28px 0px;
+    padding: 40px;
+    background-color: #ffffff;
+    border: 1px solid rgba(219, 221, 238, 0.41);
+    border-radius: 4px;
+    box-shadow: 0px 32px 120px -25px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.custom-box:hover {
+    background-color: #7CFC00;
+    color: #fff; /* Optional: Change text color to white for better contrast */
+}
+
+/* modify code  */
+ /* Custom styles for animation and layout */
+
+ .section-heading h5,
+ .section-heading p {
+   opacity: 0; /* Initially hide the content */
+   transform: translateY(-100%); /* Move content out of view initially */
+   transition: transform 0.6s ease, opacity 0.6s ease;
+ }
+ 
+ .section-heading h5.in-view,
+ .section-heading p.in-view {
+   opacity: 1;
+   transform: translateY(0);
+ }
+ 
+ .section-heading p {
+   transition-delay: 0.6s; /* Delay for the paragraph to create staggered effect */
+ }
+ 

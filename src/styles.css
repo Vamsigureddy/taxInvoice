@@ -1,0 +1,124 @@
+.navbar-custom {
+  background-color: rgb(30, 81, 85);
+}
+
+.btn.btn-primary {
+  background-color: rgb(30, 81, 85) !important;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-nav .nav-link {
+  color: #ffffff; /* White */
+}
+
+.navbar-custom .navbar-toggler-icon {
+  background-color: #ffffff; /* White */
+}
+
+/* Add a little left margin to navbar items */
+.navbar-nav {
+  margin-left: 10px; /* Adjust the margin as needed */
+}
+
+.custom-card {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-card .card-body {
+  padding: 1.25rem;
+}
+
+.custom-card .card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.custom-card .card-text {
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+.custom-card .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.custom-card .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.accordion-header-custom {
+  background-color: rgb(20, 65, 100) !important;
+  color: white !important;
+}
+
+.card-header{
+  background-color: rgb(20, 65, 100) !important;
+  color: white !important;
+}
+
+/* Set default color for the arrow */
+.accordion-button::after {
+  content: "";
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23ffffff' class='bi bi-chevron-down' viewBox='0 0 16 16'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 1 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  transition: transform 0.3s ease;
+}
+
+/* Ensure arrow color is always white */
+.accordion-button::after {
+  fill: #ffffff; /* Set arrow color to white */
+}
+
+a {
+  color: rgb(30, 81, 85);
+  font-weight: bold;
+}
+
+#alertMessage,
+#RealFactMessage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100vw / 2);
+  z-index: 1000; /* Ensure the alert is above other content */
+}
+.navbar-brand img {
+  height: 40px; /* Adjust the height of the logo */
+}
+
+/* Style for the course duration */
+.course-duration {
+  position: fixed;
+  /* top: 80px; Adjust as needed based on your navbar height */
+  right: 0px;
+  background-color: #007bff; /* Blue background color */
+  color: white; /* White text color */
+  padding: 10px 20px; /* Padding for the content */
+  border-radius: 5px;
+  font-size: 16px; /* Larger font size */
+  font-weight: bold; /* Bold font weight */
+  font-family: Arial, sans-serif; /* Font family */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+  z-index: 1000; /* Ensure it's above other content */
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .course-duration {
+    /*top: 60px; /* Adjust top position for smaller screens */
+    right: 0px;
+    font-size: 16px; /* Adjust font size for smaller screens */
+  }
+}
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

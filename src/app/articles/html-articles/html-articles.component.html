@@ -1,0 +1,30 @@
+
+
+
+  <!-- html-articles.component.html -->
+
+<div *ngIf="windowID; else regularContent">
+  <!-- If windowID exists, load HtmlArticlesNewwindowComponent -->
+  <!-- <app-html-articles-newwindow ></app-html-articles-newwindow> -->
+  <app-html-articles-newwindow [windowID]="windowID"></app-html-articles-newwindow>
+</div>
+<ng-template #regularContent>
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">HTML List Overview</h5>
+        <ul class="list-unstyled">
+          <li>HTML lists are used to present information in a structured and organized manner.</li>
+          <li>There are three main types of HTML lists: unordered lists, ordered lists, and description lists.</li>
+          <li>Unordered lists (<code>&lt;ul&gt;</code>) are used to create lists of items where the order is not important. They are typically displayed with bullet points.</li>
+        </ul>
+        <span class="text-muted" style="font-style: italic;">Created by : Rakesh, Misard Student</span>
+
+        <button type="button" class="btn btn-primary custom-btn float-end" (click)="openNewWindow('1')">View More</button> <!-- Use float-end class to float button to the right -->
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+  

@@ -1,0 +1,112 @@
+
+<div class="alert alert-info" role="alert">
+  <strong>Note:</strong> Below bootstrap templates explanation will be covered in the course.
+</div>
+
+<div *ngIf="!isVisit" class="container mt-5">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Customer</h5>
+          <a (click)="evtDisplayTemlate('customer')" class="btn btn-primary"
+            >Visit</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Customer Details Form</h5>
+          <a
+          (click)="evtDisplayTemlate('CustomerDetailsForm')"
+            class="btn btn-primary"
+            >Visit</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Customer Form</h5>
+          <a (click)="evtDisplayTemlate('CustomerForm')" class="btn btn-primary"
+            >Visit</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Customer Login Form</h5>
+          <a (click)="evtDisplayTemlate('CustomerloginForm')" class="btn btn-primary"
+            >Visit</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Customer Login Form (sidebyside)</h5>
+          <a
+          (click)="evtDisplayTemlate('CustomerloginForm(sidebyside)')"
+            class="btn btn-primary"
+            >Visit</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Customer History</h5>
+          <a (click)="evtDisplayTemlate('Customerhistory')" class="btn btn-primary"
+            >Visit</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Customer List</h5>
+          <a (click)="evtDisplayTemlate('Customerlist')" class="btn btn-primary"
+            >Visit</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Menu Item</h5>
+          <a (click)="evtDisplayTemlate('menuitems')" class="btn btn-primary"
+            >Visit</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Navigation Menu</h5>
+          <a (click)="evtDisplayTemlate('navigationmenu')" class="btn btn-primary"
+            >Visit</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-templates>
+</app-templates>
