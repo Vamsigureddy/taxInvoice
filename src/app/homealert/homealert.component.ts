@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { TaxDataservieService } from '../services/tax-dataservie.service';
 import { Router } from '@angular/router';
 import { TemplateService } from '../services/templateservices';
+import { InvoiceService } from '../services/invoice.service';
+import { DatePipe } from '@angular/common';
+
 export interface Item {
   item: string;
   qty: number | null; // Allow null for qty
@@ -14,10 +17,16 @@ export interface Item {
 @Component({
   selector: 'app-homealert',
   templateUrl: './homealert.component.html',
-  styleUrls: ['./homealert.component.css']
+  styleUrls: ['./homealert.component.css'],
+  providers: [DatePipe]
+
 })
 export class HomealertComponent implements OnInit{
-  
+  showNotificationModal: boolean = false;
+  callbackRequests: any[] = [];
+  isLoading: boolean = false;
+  sortedCallbackRequests: any[] = [];
+
   fullName: string = '';
   dateOfBirth: string = '';
   addressLine2: string = '';
@@ -30,13 +39,23 @@ export class HomealertComponent implements OnInit{
   grandTotalTaxAmount: number = 0;
   grandTotalAmount: number = 0;
   grandTotalAmountInWords: string = '';
-
-  constructor(private dataService: TaxDataservieService, private router: Router,private sharedService:TemplateService ) { }
+  sortDirection = {
+    created_at: true,
+    full_name: true,
+    email: true,
+    phone: true,
+    requirement: true,
+    location: true
+  };
+  constructor(private dataService: TaxDataservieService, private router: Router,private sharedService:TemplateService,
+    private callbackService:InvoiceService
+   ) { }
 
   saveInvoice(){}
 
   ngOnInit() {
-   
+    this.sortedCallbackRequests = [...this.callbackRequests];
+
   }
 calculateItemAmounts(item: Item) {
   if (item.price !== null && item.qty !== null) {
@@ -144,4 +163,23 @@ revarce() {
 userHistory(){
   this.router.navigate(['/tax-history'])
 }
+
+toggleNotificationModal() {
+  this.showNotificationModal = !this.showNotificationModal;
+  this.callbackService.getCallbackRequests()
+    .subscribe(
+      (data) => {
+        this.callbackRequests = data;
+        console.log('Callback Requests:', data);
+      },
+      (error) => {
+        console.error('Error fetching callback requests:', error);
+      }
+    );
+}
+backtopage(){
+  this.showNotificationModal = false;
+
+}
+
 }

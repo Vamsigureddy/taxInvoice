@@ -1,8 +1,8 @@
 // invoice.service.ts
 
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { catchError, Observable, throwError  } from 'rxjs';
 
 interface InvoiceItem {
   item: string;
@@ -47,5 +47,16 @@ saveInvoice(invoiceData: any): Observable<any> {
 }
 createCallbackRequest(data: any): Observable<any> {
   return this.http.post(this.apiUrl, data);
+}
+
+getCallbackRequests(): Observable<any[]> {
+  return this.http.get<any[]>(this.apiUrl)
+    .pipe(
+      catchError(this.handleError)
+    );
+}
+private handleError(error: HttpErrorResponse): Observable<never> {
+  console.error('An error occurred:', error);
+  return throwError('Something went wrong. Please try again later.'); // Adjust error handling as per your application's needs
 }
 }

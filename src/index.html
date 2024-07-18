@@ -1,97 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>RR Enterprises</title>
-    <base href="/" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <title>Welcome to RR Enterprises</title>
-      <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<head>
+  <title>RR Enterprises</title>
+  <base href="/" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <title>Welcome to RR Enterprises</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MV9Y8X9469"></script>
+  
 </head>
-  <style>
-    .navbar-custom {
-      background-color: rgb(30, 81, 85);
-    }
+<style>
+  .navbar-custom {
+    background-color: rgb(30, 81, 85);
+  }
 
-    .navbar-custom .navbar-brand,
-    .navbar-custom .navbar-nav .nav-link {
-      color: #ffffff; /* White */
-    }
+  .navbar-custom .navbar-brand,
+  .navbar-custom .navbar-nav .nav-link {
+    color: #ffffff;
+    /* White */
+  }
 
-    .navbar-custom .navbar-toggler-icon {
-      background-color: #ffffff; /* White */
-    }
+  .navbar-custom .navbar-toggler-icon {
+    background-color: #ffffff;
+    /* White */
+  }
 
-    /* Add a little left margin to navbar items */
-    .navbar-nav {
-      margin-left: 10px; /* Adjust the margin as needed */
-    }
+  /* Add a little left margin to navbar items */
+  .navbar-nav {
+    margin-left: 10px;
+    /* Adjust the margin as needed */
+  }
 
-    #alertMessage,
+  #alertMessage,
+  #RealFactMessage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100vw / 1);
+    z-index: 1000;
+    /* Ensure the alert is above other content */
+    max-width: 700px;
+    /* Set a maximum width for larger screens */
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 576px) {
+
+    /* Small devices (576px and below) */
     #RealFactMessage {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: calc(100vw / 1);
-      z-index: 1000; /* Ensure the alert is above other content */
-      max-width: 700px; /* Set a maximum width for larger screens */
+      width: calc(100vw - 20px);
+      /* Adjust width for small screens */
+      max-width: none;
+      /* Remove maximum width */
     }
-    /* Responsive adjustments */
-    @media (max-width: 576px) {
-      /* Small devices (576px and below) */
-      #RealFactMessage {
-        width: calc(100vw - 20px); /* Adjust width for small screens */
-        max-width: none; /* Remove maximum width */
-      }
-    }
+  }
 
-    .navbar-brand img {
-      height: 40px; /* Adjust the height of the logo */
-    }
-    .navbar-brand img {
-      height: 40px; /* Adjust the height of the logo */
-    }
+  .navbar-brand img {
+    height: 40px;
+    /* Adjust the height of the logo */
+  }
 
-    /* Center the carousel captions and limit width */
+  .navbar-brand img {
+    height: 40px;
+    /* Adjust the height of the logo */
+  }
+
+  /* Center the carousel captions and limit width */
+  .carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 30px);
+    /* Adjust width to ensure it doesn't extend beyond the arrows */
+    max-width: 400px;
+    /* Maximum width for better readability */
+    text-align: center;
+    color: white;
+    /* Text color */
+  }
+
+  /* Adjust font size for better readability */
+  .carousel-caption h5,
+  .carousel-caption p {
+    font-size: 16px;
+    /* Adjust font size as needed */
+  }
+
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
     .carousel-caption {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: calc(
-        100% - 30px
-      ); /* Adjust width to ensure it doesn't extend beyond the arrows */
-      max-width: 400px; /* Maximum width for better readability */
-      text-align: center;
-      color: white; /* Text color */
+      max-width: 80%;
+      /* Adjust maximum width for smaller screens */
     }
 
-    /* Adjust font size for better readability */
     .carousel-caption h5,
     .carousel-caption p {
-      font-size: 16px; /* Adjust font size as needed */
+      font-size: 14px;
+      /* Adjust font size for smaller screens */
     }
+  }
+</style>
 
-    /* Media query for smaller screens */
-    @media (max-width: 768px) {
-      .carousel-caption {
-        max-width: 80%; /* Adjust maximum width for smaller screens */
-      }
+<body class="mat-typography">
+  <app-root></app-root>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script> -->
+</body>
 
-      .carousel-caption h5,
-      .carousel-caption p {
-        font-size: 14px; /* Adjust font size for smaller screens */
-      }
-    }
-
-   
-  </style>
-  <body class="mat-typography">
-    <app-root></app-root>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script> -->
-  </body>
 </html>
