@@ -18,7 +18,8 @@
             <span>Date: {{formData.dateOfBirth}}</span>
           </div>
           <div class="col-4 text-center">
-            <input type="button" class="btn btn-primary me-2" value="History" (click)="userHistory()">
+            <!-- <input type="button" class="btn btn-primary me-2" value="History" (click)="userHistory()"> -->
+             <p>Invoice No: {{invoiceForm}}</p>
           </div>
         </div>
       </td>
@@ -28,12 +29,11 @@
         <table>
           <tr>
             <td>
-              <b> Sold By: Nova Enterprises </b> <br>
-              Delhivery Pvt. Ltd. Plot No. A5 Indian Corporation <br>
-              Warehouse Park Village Dive-anjur, Bhiwandi, Off <br>
-              Nh-3, Near Mankoli Naka, District Thane, Pin Code :
-              421302 <br>
-              Mumbai, Maharashtra - 421302 <br>
+              <b> Sold By: RR Enterprises</b> <br>
+              #40, Virat nager, Havambavi, <br>
+              Siruguppa Road,Balleri <br>
+              Near: Sirugumapa Road, Landmark:Ac Functional backside <br>
+              Bellary, Karnataka - 421302 <br>
               PAN: AALFN0535C <br>
               GSTIN: 27AALFN0535C1ZK <br>
             </td>
@@ -53,7 +53,7 @@
               www.w3learnpoint.com
             </td>
             <td colspan="2" class="text-start">
-              <b>Billing Address:</b><br>
+              <b>Delivery Address:</b><br>
               Address Line: {{formData.addressLine2}}<br>
               City / Town: {{formData.cityTown}}<br>
               State / Province / Region: {{formData.stateProvinceRegion}}<br>
@@ -158,11 +158,11 @@
         <table>
           <tr>
             <td>
-              <b> Sold By: Nova Enterprises </b> <br>
-              Delhivery Pvt. Ltd. Plot No. A5 Indian Corporation <br>
-              Warehouse Park Village Dive-anjur, Bhiwandi, Off <br>
-              Nh-3, Near Mankoli Naka, District Thane, Pin Code : 421302 <br>
-              Mumbai, Maharashtra - 421302 <br>
+              <b> Sold By: RR Enterprises</b> <br>
+              #40, Virat nager, Havambavi, <br>
+              Siruguppa Road,Balleri <br>
+              Near: Sirugumapa Road, Landmark:Ac Functional backside <br>
+              Bellary, Karnataka - 421302 <br>
               PAN: AALFN0535C <br>
               GSTIN: 27AALFN0535C1ZK <br>
             </td>
@@ -182,7 +182,7 @@
               www.w3learnpoint.com
             </td>
             <td colspan="2" class="text-start">
-              <b>Billing Address:</b><br>
+              <b>Delivery Address:</b><br>
               Address Line: {{ customerRecord.address_line2 }}<br>
               City / Town: {{ customerRecord.city_town }}<br>
               State / Province / Region: {{ customerRecord.state_province_region }}<br>
