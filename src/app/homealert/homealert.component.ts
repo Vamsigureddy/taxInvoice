@@ -51,7 +51,6 @@ export class HomealertComponent implements OnInit{
     private callbackService:InvoiceService
    ) { }
 
-  saveInvoice(){}
 
   ngOnInit() {
     this.sortedCallbackRequests = [...this.callbackRequests];

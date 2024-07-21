@@ -44,19 +44,15 @@
   }
 
   /* example */
-  .top_rw{ background-color:#f4f4f4; }
-	.td_w{ }
-	button{ padding:5px 10px; font-size:14px;}
+  /* .top_rw{ background-color:#f4f4f4; } */
     .invoice-box {
         max-width: 890px;
         margin: auto;
         padding:10px;
         border: 1px solid #eee;
-        box-shadow: 0 0 10px rgba(0, 0, 0, .15);
         font-size: 14px;
         line-height: 24px;
         font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-        color: #555;
     }
     .invoice-box table {
         width: 100%;
@@ -77,7 +73,6 @@
     .invoice-box table tr.top table td.title {
         font-size: 45px;
         line-height: 45px;
-        color: #333;
     }
     .invoice-box table tr.information table td {
         padding-bottom: 40px;
@@ -147,8 +142,21 @@ input[type=number] {
 /* Additional styling for form-control-plaintext to remove borders and background */
 .form-control-plaintext {
   border: none;
-  background-color: transparent;
+  /* background-color: transparent; */
   padding: 0;
   margin: 0;
   line-height: normal;
+}
+
+/* pdf  print  */
+@media print {
+  body {
+    background-color: white;
+  }
+  .invoice-box {
+    background-color: white !important;
+  }
+  .no-print {
+    display: none !important;
+  }
 }
