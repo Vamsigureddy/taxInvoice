@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaxDataservieService } from '../services/tax-dataservie.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TemplateService } from '../services/templateservices';
 import { InvoiceService } from '../services/invoice.service';
 import { DatePipe } from '@angular/common';
@@ -39,6 +39,7 @@ export class HomealertComponent implements OnInit{
   grandTotalTaxAmount: number = 0;
   grandTotalAmount: number = 0;
   grandTotalAmountInWords: string = '';
+  invoiceNumber: string = '';
   sortDirection = {
     created_at: true,
     full_name: true,
@@ -48,13 +49,16 @@ export class HomealertComponent implements OnInit{
     location: true
   };
   constructor(private dataService: TaxDataservieService, private router: Router,private sharedService:TemplateService,
-    private callbackService:InvoiceService
+    private callbackService:InvoiceService,private route: ActivatedRoute,
    ) { }
 
 
   ngOnInit() {
     this.sortedCallbackRequests = [...this.callbackRequests];
-
+    this.route.params.subscribe((params: any) => {
+      const invoiceId = params['id'];
+      this.fetchInvoiceDetails(invoiceId);
+    });
   }
 calculateItemAmounts(item: Item) {
   if (item.price !== null && item.qty !== null) {
@@ -134,20 +138,32 @@ removeItem() {
     this.updateGrandTotals();
   }
 }
-
+generateInvoiceNumber(): string {
+  return this.dataService.getNextInvoiceNumber();
+}
+fetchInvoiceDetails(invoiceId: string): void {
+  // Fetch the invoice details using the invoiceId
+  // Implement the logic to fetch invoice details
+  console.log(`Fetching invoice details for ID: ${invoiceId}`);
+}
 saveData() {
-  const formData = {
-    fullName: this.fullName,
-    dateOfBirth: this.dateOfBirth,
-    addressLine2: this.addressLine2,
-    cityTown: this.cityTown,
-    stateProvinceRegion: this.stateProvinceRegion,
-    zipPostalCode: this.zipPostalCode,
-    items: this.items,
-    grandTotalTaxAmount: this.grandTotalTaxAmount,
-    grandTotalAmount: this.grandTotalAmount,
-    grandTotalAmountInWords: this.grandTotalAmountInWords
-  };
+   // Generate the invoice number
+   this.invoiceNumber = this.generateInvoiceNumber();
+
+   // Create form data
+   const formData = {
+     fullName: this.fullName,
+     dateOfBirth: this.dateOfBirth,
+     addressLine2: this.addressLine2,
+     cityTown: this.cityTown,
+     stateProvinceRegion: this.stateProvinceRegion,
+     zipPostalCode: this.zipPostalCode,
+     items: this.items,
+     grandTotalTaxAmount: this.grandTotalTaxAmount,
+     grandTotalAmount: this.grandTotalAmount,
+     grandTotalAmountInWords: this.grandTotalAmountInWords,
+     invoiceNumber: this.invoiceNumber
+   };
   console.log('Form Data:', formData);
 
   this.dataService.updateFormData(formData);

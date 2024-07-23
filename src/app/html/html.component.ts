@@ -27,7 +27,8 @@ export class HtmlComponent implements OnInit {
     grandTotalAmountInWords: '',
     items: [
       { item: '', qty: 0, price: '', taxRate: '', taxAmount: '', totalAmount: '' }
-    ]
+    ],
+    invoiceNumber: ''
   };
   alertMessage: string = '';
 
@@ -45,11 +46,8 @@ export class HtmlComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.currentFormData.subscribe(data => {
       this.formData = data;
+      
     });
-    // this.route.params.subscribe(params => {
-    //   const index = +params['id'];  // Get the index from route parameters
-    //   this.customerRecord = this.sharedService.getData()[index];  // Fetch the record using the index
-    // });
 
     this.route.params.subscribe(params => {
       const invoiceId = params['id'];
@@ -91,8 +89,9 @@ onSave() {
       tax_rate: item.taxRate,
       tax_amount: item.taxAmount,
       total_amount: item.totalAmount
-    }))
-  };
+    })),
+    invoiceNumber: this.formData.invoiceNumber // Make sure this is correctly assigned
+   };
 
   this.invoiceService.saveInvoice(invoiceData).subscribe(
     response => {

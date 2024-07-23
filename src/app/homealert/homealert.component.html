@@ -25,6 +25,10 @@
           <label for="dateofbirth">Date</label>
           <input type="date" class="form-control" name="dateofbirth" id="dateofbirth" [(ngModel)]="dateOfBirth">
         </div>
+        <div class="col d-none">
+          <label for="invoiceNumber">Invoice Number</label>
+          <input type="text" id="invoiceNumber" [(ngModel)]="invoiceNumber" name="invoiceNumber" readonly>
+        </div>
       </div>
     </div>
     <tr class="information">

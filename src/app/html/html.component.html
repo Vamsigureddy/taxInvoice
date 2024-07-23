@@ -13,7 +13,7 @@
           <span>Date: {{formData.dateOfBirth}}</span>
         </div>
         <div class="col-md-4 text-center">
-          <p>Invoice No: {{invoiceForm}}</p>
+          <p>Invoice No: {{formData.invoiceNumber}}</p>  <!-- Display invoice number -->
         </div>
       </div>
         <div class="row mb-4 mt-4">
@@ -129,7 +129,7 @@
       </td>
     </tr> 
   </div>
-  <div class="text-center mt-3 no-print">
+  <div class="text-center mt-3 no-print" *ngIf="!customerRecord">
   <button class="btn btn-info me-2" (click)="onSave()">Save</button>
   <button class="btn btn-info me-2" (click)="downLoad()">DownLoad</button>
   <button class="btn btn-info" (click)="revarce()">Back</button>
@@ -149,9 +149,8 @@
           <div class="col-4 text-center pt-3">
             <span>Date: {{ customerRecord.date_of_birth }}</span>
           </div>
-          <div class="col-4 text-end pt-3">
-            <input type="button" class="btn btn-primary me-2" value="History" (click)="userHistory()">
-            <input type="button" value="Home" class="btn btn-info text-white" routerLink="/tax-form">
+          <div class="col-4 text-center pt-3">
+            <span>Date: {{ customerRecord.invoiceNumber }}</span>
           </div>
         </div>
       </td>
@@ -258,4 +257,8 @@
       </table>
     </td>
   </tr>
+</div>
+<div class="text-center mt-3 no-print" *ngIf="customerRecord">
+  <input type="button" class="btn btn-primary me-2" value="History" (click)="userHistory()">
+  <input type="button" value="Home" class="btn btn-info text-white" routerLink="/tax-form">
 </div>
