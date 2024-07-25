@@ -1,4 +1,4 @@
-<div class="invoice-box" style="margin-top: 2rem;" *ngIf="!showNotificationModal">
+<div class="invoice-box shadow-lg p-3 mb-5 bg-white rounded mt-4" *ngIf="!showNotificationModal">
   <table cellpadding="0" cellspacing="0">
     <tr class="top_rw">
       <td colspan="2">
@@ -16,63 +16,72 @@
       </td>
     </tr>
     <div class="wrapper">
-      <div class="row">
-        <div class="col">
-          <label for="otherInput">Full Name</label>
-          <input type="text" class="form-control border-bottom" id="otherInput" [(ngModel)]="fullName">
+      <form #invoiceForm="ngForm">
+        <div class="row">
+          <div class="col">
+            <label for="fullName">Full Name</label>
+            <input type="text" class="form-control border-bottom" id="fullName" name="fullName" required
+              [(ngModel)]="fullName" #fullNameCtrl="ngModel">
+            <div *ngIf="fullNameCtrl.invalid && fullNameCtrl.touched" class="text-danger">
+              Full Name is required.
+            </div>
+          </div>
+          <div class="col">
+            <label for="dateofbirth">Date</label>
+            <input type="date" class="form-control" name="dateofbirth" id="dateofbirth" required
+              [(ngModel)]="dateOfBirth" #dateOfBirthCtrl="ngModel">
+            <div *ngIf="dateOfBirthCtrl.invalid && dateOfBirthCtrl.touched" class="text-danger">
+              Date of Birth is required.
+            </div>
+          </div>
+          <div class="col d-none">
+            <label for="invoiceNumber">Invoice Number</label>
+            <input type="text" id="invoiceNumber" name="invoiceNumber" readonly [(ngModel)]="invoiceNumber">
+          </div>
         </div>
-        <div class="col">
-          <label for="dateofbirth">Date</label>
-          <input type="date" class="form-control" name="dateofbirth" id="dateofbirth" [(ngModel)]="dateOfBirth">
-        </div>
-        <div class="col d-none">
-          <label for="invoiceNumber">Invoice Number</label>
-          <input type="text" id="invoiceNumber" [(ngModel)]="invoiceNumber" name="invoiceNumber" readonly>
-        </div>
-      </div>
-    </div>
-    <tr class="information">
-      <td colspan="3">
-        <table>
-          <tr>
-            <div class="row">
-              <div class="col-xs-12">
-                <form class="form-horizontal" role="form">
-                  <div class="form-group" style="margin-top: 1rem; margin-bottom: 1rem;">
-                    <label for="inputAddressLine2" class="col-sm-2 control-label">Address</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputAddressLine2" name="address-line2"
-                        placeholder="Address Line" [(ngModel)]="addressLine2">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-4">
-                      <div class="form-group" style="margin-top: 1rem; margin-bottom: 1rem;">
-                        <input type="text" class="form-control" id="inputCityTown" name="city-town"
-                          placeholder="City / Town" [(ngModel)]="cityTown">
-                      </div>
-                    </div>
-                    <div class="col-sm-4" style="margin-top: 1rem; margin-bottom: 1rem;">
-                      <div class="form-group">
-                        <input type="text" class="form-control" id="inputStateProvinceRegion"
-                          name="state-province-region" placeholder="State / Province / Region"
-                          [(ngModel)]="stateProvinceRegion">
-                      </div>
-                    </div>
-                    <div class="col-sm-4" style="margin-top: 1rem; margin-bottom: 1rem;">
-                      <input type="text" class="form-control" id="inputZipPostalCode" name="zip-postal-code"
-                        placeholder="Zip / Postal Code" [(ngModel)]="zipPostalCode">
-                    </div>
-                  </div>
-                </form>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group" style="margin-top: 1rem; margin-bottom: 1rem;">
+              <label for="inputAddressLine2">Address</label>
+              <input type="text" class="form-control" id="inputAddressLine2" name="addressLine2"
+                placeholder="Address Line" [(ngModel)]="addressLine2" required #addressLine2Ctrl="ngModel">
+              <div *ngIf="addressLine2Ctrl.invalid && addressLine2Ctrl.touched" class="text-danger">
+                Address is required.
               </div>
             </div>
-          </tr>
-        </table>
-      </td>
-    </tr>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group" style="margin-top: 1rem; margin-bottom: 1rem;">
+              <input type="text" class="form-control" id="inputCityTown" name="cityTown"
+                placeholder="City / Town" [(ngModel)]="cityTown" required #cityTownCtrl="ngModel">
+              <div *ngIf="cityTownCtrl.invalid && cityTownCtrl.touched" class="text-danger">
+                City/Town is required.
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4" style="margin-top: 1rem; margin-bottom: 1rem;">
+            <div class="form-group">
+              <input type="text" class="form-control" id="inputStateProvinceRegion"
+                name="stateProvinceRegion" placeholder="State / Province / Region"
+                [(ngModel)]="stateProvinceRegion" required #stateProvinceRegionCtrl="ngModel">
+              <div *ngIf="stateProvinceRegionCtrl.invalid && stateProvinceRegionCtrl.touched" class="text-danger">
+                State/Province/Region is required.
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4" style="margin-top: 1rem; margin-bottom: 1rem;">
+            <input type="text" class="form-control" id="inputZipPostalCode" name="zipPostalCode"
+              placeholder="Zip / Postal Code" [(ngModel)]="zipPostalCode" required #zipPostalCodeCtrl="ngModel">
+            <div *ngIf="zipPostalCodeCtrl.invalid && zipPostalCodeCtrl.touched" class="text-danger">
+              Zip/Postal Code is required.
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   </table>
-
   <table cellspacing="0px" cellpadding="2px">
     <tr class="heading" style="background-color: gainsboro;">
       <th style="width:5%; text-align:center;">sr no</th>
@@ -86,17 +95,26 @@
     <tr class="item" *ngFor="let item of items; let i = index">
       <td style="width:5%; text-align:center;">{{ i + 1 }}</td>
       <td style="width:25%;">
-        <input type="text" [(ngModel)]="item.item" class="form-control-plaintext" placeholder="Enter item">
+        <input type="text" [(ngModel)]="item.item" class="form-control-plaintext" placeholder="Enter item" required
+          #itemCtrl="ngModel">
+        <div *ngIf="itemCtrl.invalid && itemCtrl.touched" class="text-danger text-start">
+          Item is required.
+        </div>
       </td>
       <td style="width:10%; text-align:center;">
         <input type="number" [(ngModel)]="item.qty" (ngModelChange)="calculateItemAmounts(item)"
-          class="form-control-plaintext centered-placeholder" placeholder="Enter qty">
+          class="form-control-plaintext centered-placeholder" placeholder="Enter qty" required #qtyCtrl="ngModel">
+        <div *ngIf="qtyCtrl.invalid && qtyCtrl.touched" class="text-danger">
+          Quantity is required.
+        </div>
       </td>
       <td style="width:10%; text-align:right;">
         <input type="number" [(ngModel)]="item.price" (ngModelChange)="calculateItemAmounts(item)"
-          class="form-control-plaintext centered-placeholder" placeholder="Enter price">
+          class="form-control-plaintext centered-placeholder" placeholder="Enter price" required #priceCtrl="ngModel">
+        <div *ngIf="priceCtrl.invalid && priceCtrl.touched" class="text-danger">
+          Price is required.
+        </div>
       </td>
-
       <td style="width:15%; text-align:right;">{{ item.taxRate }}%</td>
       <td style="width:15%; text-align:right;">{{ item.taxAmount ? (item.taxAmount | currency:'INR') : '' }}</td>
       <td style="width:15%; text-align:right;">{{ item.totalAmount ? (item.totalAmount | currency:'INR') : '' }}</td>
@@ -108,7 +126,7 @@
             class="bi bi-plus-circle" viewBox="0 0 16 16" style="margin-right: 8px; cursor: pointer;">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
             <path
-              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
           </svg>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle"
             viewBox="0 0 16 16" (click)="removeItem()" style="cursor: pointer;">
@@ -117,27 +135,15 @@
           </svg>
         </div>
       </td>
+      
     </tr>
-    <tr class="item" *ngIf="items.length">
-      <td style="width:5%;"></td>
-      <td style="width:25%;"><b>Grand Total</b></td>
-      <td style="width:10%; text-align:center;"></td>
-      <td style="width:10%; text-align:right;"></td>
-      <td style="width:15%; text-align:right;"></td>
-      <td style="width:15%; text-align:right;">{{ grandTotalTaxAmount ? (grandTotalTaxAmount | currency:'INR') : '' }}
-      </td>
-      <td style="width:15%; text-align:right;">{{ grandTotalAmount ? (grandTotalAmount | currency:'INR') : '' }}</td>
-    </tr>
+  
   </table>
-  <tr class="total" *ngIf="grandTotalAmount">
-    <td colspan="8" style="text-align:right;">
-      Total Amount in Words: <b>{{ grandTotalAmountInWords }}</b>
-    </td>
-  </tr>
   <div class="text-end mt-3">
-    <button class="btn btn-info text-end" (click)="saveData()">NextPage</button>
+    <button class="btn btn-info text-end" (click)="saveData()" [disabled]="!invoiceForm.valid">NextPage</button>
   </div>
 </div>
+
 
 <!-- Modal -->
 <div class="container" *ngIf="showNotificationModal">
