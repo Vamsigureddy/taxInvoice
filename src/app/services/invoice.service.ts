@@ -2,7 +2,8 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { catchError, Observable, throwError  } from 'rxjs';
+import { catchError, Observable, throwError , of  } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 interface InvoiceItem {
   item: string;
@@ -58,5 +59,42 @@ getCallbackRequests(): Observable<any[]> {
 private handleError(error: HttpErrorResponse): Observable<never> {
   console.error('An error occurred:', error);
   return throwError('Something went wrong. Please try again later.'); // Adjust error handling as per your application's needs
+}
+
+
+checkInvoiceNumber(invoiceNumber: string): Observable<boolean> {
+  return this.http.get<boolean>(`${this.baseUrl}check-invoice-number/${invoiceNumber}/`).pipe(
+    map(() => true),
+    catchError(() => of(false))
+  );
+}
+
+generateNewInvoiceNumber(): Observable<string> {
+  return this.getNextInvoiceNumber('INV-000000');
+}
+
+private getNextInvoiceNumber(currentNumber: string): Observable<string> {
+  return this.checkInvoiceNumber(currentNumber).pipe(
+    switchMap(exists => {
+      if (!exists) {
+        return of(currentNumber);
+      } else {
+        const newNumber = this.incrementInvoiceNumber(currentNumber);
+        return this.getNextInvoiceNumber(newNumber);
+      }
+    }),
+    catchError(() => of('INV-000001')) // Fallback
+  );
+}
+
+private incrementInvoiceNumber(invoiceNumber: string): string {
+  const match = invoiceNumber.match(/(\d+)/);
+  if (match) {
+    const numberPart = match[1];
+    const incrementedNumber = (parseInt(numberPart, 10) + 1).toString().padStart(6, '0');
+    return `INV-${incrementedNumber}`;
+  } else {
+    return 'INV-000001';
+  }
 }
 }

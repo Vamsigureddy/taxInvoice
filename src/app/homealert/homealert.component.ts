@@ -147,30 +147,23 @@ fetchInvoiceDetails(invoiceId: string): void {
   console.log(`Fetching invoice details for ID: ${invoiceId}`);
 }
 saveData() {
-   // Generate the invoice number
-   this.invoiceNumber = this.generateInvoiceNumber();
+  this.invoiceNumber = this.generateInvoiceNumber();
+  const formData = {
+    fullName: this.fullName,
+    dateOfBirth: this.dateOfBirth,
+    addressLine2: this.addressLine2,
+    cityTown: this.cityTown,
+    stateProvinceRegion: this.stateProvinceRegion,
+    zipPostalCode: this.zipPostalCode,
+    items: this.items,
+    grandTotalTaxAmount: this.grandTotalTaxAmount,
+    grandTotalAmount: this.grandTotalAmount,
+    grandTotalAmountInWords: this.grandTotalAmountInWords,
+    invoiceNumber: this.invoiceNumber
+  };
 
-   // Create form data
-   const formData = {
-     fullName: this.fullName,
-     dateOfBirth: this.dateOfBirth,
-     addressLine2: this.addressLine2,
-     cityTown: this.cityTown,
-     stateProvinceRegion: this.stateProvinceRegion,
-     zipPostalCode: this.zipPostalCode,
-     items: this.items,
-     grandTotalTaxAmount: this.grandTotalTaxAmount,
-     grandTotalAmount: this.grandTotalAmount,
-     grandTotalAmountInWords: this.grandTotalAmountInWords,
-     invoiceNumber: this.invoiceNumber
-   };
-  console.log('Form Data:', formData);
-
-  this.dataService.updateFormData(formData);
-  console.log('Update response:', Response);
-
+  this.sharedService.setFormData(formData);
   this.router.navigate(['/html-training']);
-  this.sharedService.saveData(formData);
 }
 revarce() {
   this.router.navigate(['/not-found']);

@@ -7,6 +7,7 @@ import { TaxDataservieService } from '../services/tax-dataservie.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TemplateService } from '../services/templateservices';
 import { InvoiceService } from '../services/invoice.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -15,6 +16,8 @@ import { InvoiceService } from '../services/invoice.service';
   styleUrls: ['./html.component.css']
 })
 export class HtmlComponent implements OnInit {
+  showSecondDiv = false;
+  newInvoiceNumber: string;
   formData = {
     fullName: '',
     dateOfBirth: '',
@@ -28,8 +31,8 @@ export class HtmlComponent implements OnInit {
     items: [
       { item: '', qty: 0, price: '', taxRate: '', taxAmount: '', totalAmount: '' }
     ],
-    invoiceNumber: ''
-  };
+    invoiceNumber: 'INV-000000' 
+    };
   alertMessage: string = '';
 
   invoiceForm: FormGroup;
@@ -48,6 +51,8 @@ export class HtmlComponent implements OnInit {
       this.formData = data;
       
     });
+    this.formData = this.sharedService.getFormData();
+    console.log('Received form data:', this.formData);
 
     this.route.params.subscribe(params => {
       const invoiceId = params['id'];
@@ -71,7 +76,31 @@ userHistory(){
   this.router.navigate(['/tax-history'])
 }
 
-onSave() {
+onSave(): void {
+  this.invoiceService.checkInvoiceNumber(this.formData.invoiceNumber).subscribe(
+    exists => {
+      if (exists) {
+        // If the invoice number exists, generate a new one
+        this.invoiceService.generateNewInvoiceNumber().subscribe(
+          (newInvoiceNumber: string) => { // Explicitly type the response
+            this.formData.invoiceNumber = newInvoiceNumber;
+            this.showSecondDiv = true;
+          },
+          error => {
+            console.error('Error generating new invoice number:', error);
+          }
+        );
+      } else {
+        // If the invoice number does not exist, proceed
+        this.showSecondDiv = true;
+      }
+    },
+    error => {
+      console.error('Error checking invoice number:', error);
+    }
+  );
+}
+saveData() {
   const invoiceData = {
     full_name: this.formData.fullName,
     date_of_birth: this.formData.dateOfBirth,
@@ -91,7 +120,7 @@ onSave() {
       total_amount: item.totalAmount
     })),
     invoiceNumber: this.formData.invoiceNumber // Make sure this is correctly assigned
-   };
+  };
 
   this.invoiceService.saveInvoice(invoiceData).subscribe(
     response => {
@@ -105,6 +134,7 @@ onSave() {
     }
   );
 }
+
 fetchInvoiceDetails(id: number): void {
   this.http.get<any>(`http://127.0.0.1:8000/api/invoices/${id}/`).subscribe(
     (data) => {
@@ -138,6 +168,39 @@ downLoad() {
     });
   }
 }
+private baseUrl = 'http://127.0.0.1:8000/api/invoices/';
 
+// invoice number check
+checkInvoiceNumber(invoiceNumber: string): Observable<boolean> {
+  return this.http.get<boolean>(`${this.baseUrl}check-invoice-number/${invoiceNumber}/`);
+}
+
+// generate New InvoiceNumber check
+
+generateNewInvoiceNumber(): void {
+  const latestInvoiceNumber = 'INV-000000'; // Start with the initial number
+  let newInvoiceNumber = this.incrementInvoiceNumber(latestInvoiceNumber);
+
+  this.invoiceService.checkInvoiceNumber(newInvoiceNumber).subscribe(exists => {
+    while (exists) {
+      newInvoiceNumber = this.incrementInvoiceNumber(newInvoiceNumber);
+      this.invoiceService.checkInvoiceNumber(newInvoiceNumber).subscribe(innerExists => exists = innerExists);
+    }
+    this.newInvoiceNumber = newInvoiceNumber;
+    console.log('New invoice number:', this.newInvoiceNumber);
+  });
+}
+// increment Invoice Number check
+
+incrementInvoiceNumber(invoiceNumber: string): string {
+  const match = invoiceNumber.match(/(\d+)/);
+  if (match) {
+    const numberPart = match[1];
+    const incrementedNumber = (parseInt(numberPart, 10) + 1).toString().padStart(6, '0');
+    return `INV-${incrementedNumber}`;
+  } else {
+    return 'INV-000001';
+  }
+}
 }
 
