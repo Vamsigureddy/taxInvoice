@@ -26,9 +26,7 @@ export class TemplateService {
   saveData(record: any) {
     this.customerRecords.push(record);
     this.saveToLocalStorage();  }
-  getData() {
-    return this.customerRecords;
-  }
+
   private saveToLocalStorage() {
     localStorage.setItem('customerRecords', JSON.stringify(this.customerRecords));
   }
@@ -37,5 +35,15 @@ export class TemplateService {
     if (data) {
       this.customerRecords = JSON.parse(data);
     }
+  }
+  // using @input
+  private formData: any;
+
+  setFormData(data: any) {
+    this.formData = data;
+  }
+
+  getFormData() {
+    return this.formData;
   }
 }

@@ -1,3 +1,4 @@
+<div *ngIf="!showSecondDiv">
   <div class="invoice-box bg-light" style="margin-top: 2rem;" *ngIf="!customerRecord" id="invoice-box">
     <div class="container mt-4">
       <!-- Header Section -->
@@ -12,7 +13,7 @@
         <div class="col-md-4 text-center">
           <span>Date: {{formData.dateOfBirth}}</span>
         </div>
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 text-center d-none ">
           <p>Invoice No: {{formData.invoiceNumber}}</p>  <!-- Display invoice number -->
         </div>
       </div>
@@ -130,13 +131,151 @@
     </tr> 
   </div>
   <div class="text-center mt-3 no-print" *ngIf="!customerRecord">
-  <button class="btn btn-info me-2" (click)="onSave()">Save</button>
-  <button class="btn btn-info me-2" (click)="downLoad()">DownLoad</button>
-  <button class="btn btn-info" (click)="revarce()">Back</button>
+  <button class="btn btn-info me-2" (click)="onSave()">Click Confirm</button>
+</div>
 </div>
 
 
+<!-- click on save display content  -->
+<div class="invoice-box bg-light" style="margin-top: 2rem;"  *ngIf="showSecondDiv" id="invoice-box">
+  <div class="container mt-4">
+    <!-- Header Section -->
+    <div class="d-flex align-items-center justify-content-between mb-4 ">
+      <h2 class="text-primary text-center flex-grow-1">Tax Invoice/Bill of Supply/Cash memo</h2>
+    </div>
+    <hr>
+    <div class="row mb-4">
+      <div class="col-md-4 text-start">
+        <span>Full Name: {{formData.fullName}}</span>
+      </div>
+      <div class="col-md-4 text-center">
+        <span>Date: {{formData.dateOfBirth}}</span>
+      </div>
+      <div class="col-md-4 text-center ">
+        <p>Invoice No: {{formData.invoiceNumber}}</p>  <!-- Display invoice number -->
+      </div>
+    </div>
+      <div class="row mb-4 mt-4">
+        <div class="col-md-6 bg-white p-4 border rounded ">
+          <b>Sold By: RR Enterprises</b><br>
+          #40, Virat Nagar, Havambavi,<br>
+          Siruguppa Road, Balleri<br>
+          Near: Sirugumapa Road, Landmark: Ac Functional backside<br>
+          Bellary, Karnataka - 421302<br>
+          PAN: AALFN0535C<br>
+          GSTIN: 27AALFN0535C1ZK
+        </div>
+      
+        <div class="col-md-6 bg-white p-4 border rounded">
+          <div class="bg-primary text-white p-2 mb-3 rounded">
+            <b>Bank Details</b>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <p><b>Account Name: <br></b> RR ENTERPRISES</p>
+              <p><b>Account No.</b> xxxxxxxxxxxxx</p>
+            </div>
+            <div class="col-md-6">
+              <p><b>Bank:</b> Axis Bank</p>
+              <p><b>IFSC Code:</b> xxxxxxxxxxxx</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <!-- Address Information -->
+    <div class="row mb-4">
+      <div class="col-md-6 bg-white p-4 border rounded">
+        <b>Shipping Address: w3learnpoint</b><br>
+        Kokar, Ranchi<br>
+        +0651-908-090-009<br>
+        info@w3learnpoint.com<br>
+        www.w3learnpoint.com
+      </div>
+      <div class="col-md-6 bg-white p-4 border rounded">
+        <b>Delivery Address:</b><br>
+        Address Line: {{formData.addressLine2}}<br>
+        City / Town: {{formData.cityTown}}<br>
+        State / Province / Region: {{formData.stateProvinceRegion}}<br>
+        Zip / Postal Code: {{formData.zipPostalCode}}
+      </div>
+    </div>
+  </div>
+  
+  <div colspan="3" class="bg-white">
+    <table cellspacing="0px" cellpadding="2px">
+      <tr class="heading" style="background-color: gainsboro;">
+        <th style="width:5%; text-align:center;">sr no</th>
+        <th style="width:25%; text-align:center;">Item</th>
+        <th style="width:10%; text-align:center;">Quantity</th>
+        <th style="width:15%; text-align:center;">Price</th>
+        <th style="width:5%; text-align:center;">Tax Rate</th>
+        <th style="width:15%; text-align:center;">Tax Amount</th>
+        <th style="width:25%; text-align:center;">Total Amount</th>
+      </tr>
+      <tr class="item" *ngFor="let item of formData.items; let i = index">
+        <td style="width:5%; text-align:center;">{{ i + 1 }}</td>
+        <td style="width:25%; text-align:center;">{{ item.item }}</td>
+        <td style="width:10%; text-align:center;">{{ item.qty }}</td>
+        <td style="width:15%; text-align:center;">{{ item.price | currency:'INR' }}</td>
+        <td style="width:5%; text-align:center;">{{ item.taxRate }}%</td>
+        <td style="width:15%; text-align:center;">{{ item.taxAmount | currency:'INR' }}</td>
+        <td style="width:25%; text-align:center;">{{ item.totalAmount | currency:'INR' }}</td>
+      </tr>
+      <tr class="item">
+        <td style="width:5%;"></td>
+        <td style="width:25%;"><b>Grand Total</b></td>
+        <td style="width:10%; text-align:center;"></td>
+        <td style="width:10%; text-align:right;"></td>
+        <td style="width:15%; text-align:right;"></td>
+        <td style="width:15%; text-align:right;">{{ formData.grandTotalTaxAmount | currency:'INR' }}</td>
+        <td style="width:15%; text-align:right;">{{ formData.grandTotalAmount | currency:'INR' }}</td>
+      </tr>
+    </table>
+    <div style="text-align:right;">
+      Total Amount in Words: <b>{{ formData.grandTotalAmountInWords }}</b>
+    </div>
+  </div>
+  <tr class="bg-white">
+    <td colspan="3">
+      <table cellspacing="0px" cellpadding="2px">
+        <tr>
+          <td width="50%">
+            <b> Declaration: </b> <br>
+            We declare that this invoice shows the actual price of the goods
+            described above and that all particulars are true and correct. The
+            goods sold are intended for end user consumption and not for resale.
+          </td>
+          <td>
+            * This is a computer generated invoice and does not
+            require a physical signature
+          </td>
+        </tr>
+        <tr>
+          <td width="50%">
+          </td>
+          <td>
+            <b> Authorized Signature </b>
+            <br>
+            <br>
+            ...................................
+            <br>
+            <br>
+            <br>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr> 
+</div>
+<div class="text-center mt-3 no-print" *ngIf="showSecondDiv">
+<button class="btn btn-info me-2" (click)="saveData()">Save</button>
+<button class="btn btn-info me-2" (click)="downLoad()">DownLoad</button>
+<button class="btn btn-info" (click)="revarce()">Back</button>
+</div>
 
+<!-- user history display ui -->
+<div *ngIf="!showSecondDiv">
 <div *ngIf="customerRecord" class="invoice-box" style="margin-top: 2rem;">
   <table cellpadding="0" cellspacing="0">
     <tr class="top_rw">
@@ -261,4 +400,5 @@
 <div class="text-center mt-3 no-print" *ngIf="customerRecord">
   <input type="button" class="btn btn-primary me-2" value="History" (click)="userHistory()">
   <input type="button" value="Home" class="btn btn-info text-white" routerLink="/tax-form">
+</div>
 </div>
