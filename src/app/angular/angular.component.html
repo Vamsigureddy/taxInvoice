@@ -1,118 +1,109 @@
 <!-- callback-request.component.html -->
 
-<div class="container mt-5" *ngIf="!submitted">
-  <div class="mt-5 text-end">
-    <button class="btn btn-primary" (click)="homepage()">Home Page</button>
-  </div>
-  <div class="row">
-    <div class="col-md-6 mt-5">
-      <h2 style="font-size: 55px;">Send us your requirement:</h2>
-      <div class="mt-4">
-        <!-- Telephone -->
-        <i class="bi bi-telephone-forward-fill me-2"></i>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-          class="bi bi-telephone-forward-fill text-primary" viewBox="0 0 16 16" style="width: 64px; height: 64px;">
-          <path fill-rule="evenodd"
-            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zm10.761.135a.5.5 0 0 1 .708 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 0 1-.708-.708L14.293 4H9.5a.5.5 0 0 1 0-1h4.793l-1.647-1.646a.5.5 0 0 1 0-.708" />
-        </svg>
-        <span class="ms-2" style="font-size: 20px;">+91 12345-67890</span>
+<div class="container" *ngIf="!submitted">
+  <div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="invoice-box shadow-lg p-3 mb-5 bg-white rounded">
+      <div class="text-end mb-3">
+        <button class="btn btn-primary" (click)="homepage()">Home Page</button>
       </div>
+      <div class="row p-2">
+        <div class="col-md-6 mt-5">
+          <div>
+            <h3>Send us your requirement:</h3>
+          </div>
+          <div class="mt-5">
+            <!-- Telephone -->
+            <i class="bi bi-telephone-forward-fill me-2"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-telephone-forward-fill text-primary" viewBox="0 0 16 16" style="width: 64px; height: 64px;">
+              <path fill-rule="evenodd"
+                d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zm10.761.135a.5.5 0 0 1 .708 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 0 1-.708-.708L14.293 4H9.5a.5.5 0 0 1 0-1h4.793l-1.647-1.646a.5.5 0 0 1 0-.708" />
+            </svg>
+            <span class="ms-2" style="font-size: 20px;">+91 12345-67890</span>
+          </div>
 
-      <div class="mt-4">
-        <!-- Email -->
-        <i class="bi bi-envelope-arrow-up me-2"></i>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-          class="bi bi-envelope-arrow-up text-primary" viewBox="0 0 16 16" style="width: 64px; height: 64px;">
-          <path
-            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4.5a.5.5 0 0 1-1 0V5.383l-7 4.2-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h5.5a.5.5 0 0 1 0 1H2a2 2 0 0 1-2-1.99zm1 7.105 4.708-2.897L1 5.383zM1 4v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1" />
-          <path
-            d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-5.354 1.25 1.25a.5.5 0 0 1-.708.708L13 12.207V14a.5.5 0 0 1-1 0v-1.717l-.28.305a.5.5 0 0 1-.737-.676l1.149-1.25a.5.5 0 0 1 .722-.016" />
-        </svg>
-        <span class="ms-2" style="font-size: 20px;">info@abc.com</span>
+          <div class="mt-4">
+            <!-- Email -->
+            <i class="bi bi-envelope-arrow-up me-2"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-envelope-arrow-up text-primary" viewBox="0 0 16 16" style="width: 64px; height: 64px;">
+              <path
+                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4.5a.5.5 0 0 1-1 0V5.383l-7 4.2-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h5.5a.5.5 0 0 1 0 1H2a2 2 0 0 1-2-1.99zm1 7.105 4.708-2.897L1 5.383zM1 4v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1" />
+              <path
+                d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-5.354 1.25 1.25a.5.5 0 0 1-.708.708L13 12.207V14a.5.5 0 0 1-1 0v-1.717l-.28.305a.5.5 0 0 1-.737-.676l1.149-1.25a.5.5 0 0 1 .722-.016" />
+            </svg>
+            <span class="ms-2" style="font-size: 20px;">info@abc.com</span>
+          </div>
+        </div>
+
+        <div class="col-md-6 mt-5 p-4 border shadow bg-light rounded">
+          <form [formGroup]="callbackForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="fullName">Full Name*</label>
+              <input type="text" id="fullName" class="form-control" formControlName="fullName">
+              <div
+                *ngIf="callbackForm.get('fullName')?.invalid && (callbackForm.get('fullName')?.dirty || callbackForm.get('fullName')?.touched)">
+                <small class="text-danger" *ngIf="callbackForm.get('fullName')?.errors?.['required']">Full Name is
+                  required.</small>
+                <small class="text-danger" *ngIf="callbackForm.get('fullName')?.errors?.['minlength']">Full Name must be at
+                  least 3 characters long.</small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email*</label>
+              <input type="email" id="email" class="form-control" formControlName="email">
+              <div
+                *ngIf="callbackForm.get('email')?.invalid && (callbackForm.get('email')?.dirty || callbackForm.get('email')?.touched)">
+                <small class="text-danger" *ngIf="callbackForm.get('email')?.errors?.['required']">Valid Email is
+                  required.</small>
+                <small class="text-danger" *ngIf="callbackForm.get('email')?.errors?.['email']">Email must be a valid email
+                  address.</small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone*</label>
+              <input type="tel" id="phone" class="form-control" formControlName="phone">
+              <div
+                *ngIf="callbackForm.get('phone')?.invalid && (callbackForm.get('phone')?.dirty || callbackForm.get('phone')?.touched)">
+                <small class="text-danger" *ngIf="callbackForm.get('phone')?.errors?.['required']">Phone number is
+                  required.</small>
+                <small class="text-danger" *ngIf="callbackForm.get('phone')?.errors?.['pattern']">Phone number must be 10
+                  digits.</small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="requirement">Your Requirement*</label>
+              <textarea id="requirement" class="form-control" formControlName="requirement"></textarea>
+              <div
+                *ngIf="callbackForm.get('requirement')?.invalid && (callbackForm.get('requirement')?.dirty || callbackForm.get('requirement')?.touched)">
+                <small class="text-danger" *ngIf="callbackForm.get('requirement')?.errors?.['required']">Requirement is
+                  required.</small>
+                <small class="text-danger" *ngIf="callbackForm.get('requirement')?.errors?.['minlength']">Requirement must
+                  be at least 10 characters long.</small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="location">Location*</label>
+              <input type="text" id="location" class="form-control" formControlName="location">
+              <div
+                *ngIf="callbackForm.get('location')?.invalid && (callbackForm.get('location')?.dirty || callbackForm.get('location')?.touched)">
+                <small class="text-danger" *ngIf="callbackForm.get('location')?.errors?.['required']">Location is
+                  required.</small>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3" [disabled]="callbackForm.invalid">Request Call Back</button>
+          </form>
+        </div>
       </div>
-    </div>
-
-    <div class="col-md-6 mt-5 p-4" style="background-color: #E9F3FF;">
-      <form [formGroup]="callbackForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="fullName">Full Name*</label>
-          <input type="text" id="fullName" class="form-control" formControlName="fullName">
-          <div
-            *ngIf="callbackForm.get('fullName')?.invalid && (callbackForm.get('fullName')?.dirty || callbackForm.get('fullName')?.touched)">
-            <small class="text-danger" *ngIf="callbackForm.get('fullName')?.errors?.['required']">Full Name is
-              required.</small>
-            <small class="text-danger" *ngIf="callbackForm.get('fullName')?.errors?.['minlength']">Full Name must be at
-              least 3 characters long.</small>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email*</label>
-          <input type="email" id="email" class="form-control" formControlName="email">
-          <div
-            *ngIf="callbackForm.get('email')?.invalid && (callbackForm.get('email')?.dirty || callbackForm.get('email')?.touched)">
-            <small class="text-danger" *ngIf="callbackForm.get('email')?.errors?.['required']">Valid Email is
-              required.</small>
-            <small class="text-danger" *ngIf="callbackForm.get('email')?.errors?.['email']">Email must be a valid email
-              address.</small>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="phone">Phone*</label>
-          <input type="tel" id="phone" class="form-control" formControlName="phone">
-          <div
-            *ngIf="callbackForm.get('phone')?.invalid && (callbackForm.get('phone')?.dirty || callbackForm.get('phone')?.touched)">
-            <small class="text-danger" *ngIf="callbackForm.get('phone')?.errors?.['required']">Phone number is
-              required.</small>
-            <small class="text-danger" *ngIf="callbackForm.get('phone')?.errors?.['pattern']">Phone number must be 10
-              digits.</small>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="requirement">Your Requirement*</label>
-          <textarea id="requirement" class="form-control" formControlName="requirement"></textarea>
-          <div
-            *ngIf="callbackForm.get('requirement')?.invalid && (callbackForm.get('requirement')?.dirty || callbackForm.get('requirement')?.touched)">
-            <small class="text-danger" *ngIf="callbackForm.get('requirement')?.errors?.['required']">Requirement is
-              required.</small>
-            <small class="text-danger" *ngIf="callbackForm.get('requirement')?.errors?.['minlength']">Requirement must
-              be at least 10 characters long.</small>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="location">Location*</label>
-          <input type="text" id="location" class="form-control" formControlName="location">
-          <div
-            *ngIf="callbackForm.get('location')?.invalid && (callbackForm.get('location')?.dirty || callbackForm.get('location')?.touched)">
-            <small class="text-danger" *ngIf="callbackForm.get('location')?.errors?.['required']">Location is
-              required.</small>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary mt-3" [disabled]="callbackForm.invalid">Request Call Back</button>
-      </form>
-      
-      <!-- <form target="_blank" action="https://formsubmit.co/vamsikrishnargureddy@gmail.com" method="POST">
-        <div class="form-group">
-          <div class="form-row">
-            <div class="col">
-              <input type="text" name="name" class="form-control" placeholder="Full Name" required>
-            </div>
-            <div class="col">
-              <input type="email" name="email" class="form-control" placeholder="Email Address" required>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <textarea placeholder="Your Message" class="form-control" name="message" rows="10" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-lg btn-dark btn-block">Submit Form</button>
-      </form> -->
     </div>
   </div>
 </div>
+
+
 
 <div class="container d-flex justify-content-center align-items-center">
   <div class="popup border border-primary rounded shadow-lg p-4" *ngIf="submitted" style="background-color: #E9F3FF;">
@@ -125,32 +116,3 @@
     </div>
   </div>
 </div>
-
-<!-- <form target="_blank" action="https://formsubmit.co/vamsikrishnargureddy@gmail.com" method="POST">
-  <div class="form-group">
-    <div class="form-row">
-      <div class="col">
-        <label for="fullName">Full Name*</label>
-        <input type="text" name="name" class="form-control" placeholder="Full Name" required>
-      </div>
-      <div class="col">
-        <label for="email">Email*</label>
-        <input type="email" name="email" class="form-control" placeholder="Email Address" required>
-      </div>
-      <div class="col">
-        <label for="phone">Phone*</label>
-        <input type="tel" name="phone" class="form-control" placeholder="phone" required>
-      </div>
-      <div class="col">
-        <label for="location">Location*</label>
-        <input type="text" name="location" class="form-control" placeholder="location" required>
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="requirement">Your Requirement*</label>
-    <textarea placeholder="Your Message" class="form-control" name="message" required></textarea>
-  </div>
-  
-  <button type="submit" class="btn btn-lg btn-dark btn-block">Request Call Back</button>
-</form> -->
