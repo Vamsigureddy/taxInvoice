@@ -12,15 +12,4 @@ export class CarouselComponent {
   userDetails(){
     this.router.navigate(['/angular-training']);
     }
-    @ViewChild('contactButton') contactButton: ElementRef;
-
-  onMouseEnter() {
-    this.contactButton.nativeElement.classList.remove('btn-danger');
-    this.contactButton.nativeElement.classList.add('btn-success');
-  }
-
-  onMouseLeave() {
-    this.contactButton.nativeElement.classList.remove('btn-success');
-    this.contactButton.nativeElement.classList.add('btn-primary');
-  }
 }
