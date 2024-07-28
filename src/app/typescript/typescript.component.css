@@ -1,0 +1,92 @@
+
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+.animated-text span {
+    display: inline-block;
+    animation: text-shadow 2s infinite;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.full-screen-card {
+    height: calc(100vh - 4rem); /* Adjust the margin-top value from the card */
+}
+
+.card-body {
+    max-height: calc(100vh - 6rem); /* Adjust based on header and possible footer height */
+    overflow-y: auto;
+}
+
+/* Extra Small Devices (Portrait Phones) */
+@media (max-width: 480px) {
+  .card-header span {
+    font-size: 1.5rem;
+  }
+
+  .card-body table thead th,
+  .card-body table tbody td {
+    font-size: 0.8rem;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+/* Small Devices (Landscape Phones) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .card-header span {
+    font-size: 2rem;
+  }
+
+  .card-body table thead th,
+  .card-body table tbody td {
+    font-size: 1rem;
+  }
+
+  .btn {
+    padding: 12px;
+  }
+}
+
+/* Medium Devices (Tablets) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .card-header span {
+    font-size: 2.5rem;
+  }
+
+  .card-body table thead th,
+  .card-body table tbody td {
+    font-size: 1.1rem;
+  }
+
+  .btn {
+    padding: 14px;
+  }
+}
+
+/* Large Devices (Small Laptops) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .card-header span {
+    font-size: 3rem;
+  }
+
+  .card-body table thead th,
+  .card-body table tbody td {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    padding: 16px;
+  }
+}
