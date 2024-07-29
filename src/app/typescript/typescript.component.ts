@@ -42,6 +42,7 @@ export class TypescriptComponent implements OnInit{
   }
   deleteRecord(index:any){
 
+    
   }
   
   loadInvoices(): void {
