@@ -147,20 +147,42 @@
 
 <!-- Modal -->
 <div class="container" *ngIf="showNotificationModal">
-  <!-- <div class="card h-100 mx-4" style="margin-top: 2rem;"> -->
   <div class="card-header bg-success text-white sticky-top mt-3">
     <div class="row">
       <div class="col-10 mt-1" style="text-align: center;">
-        <h1 >Notifications</h1>
+        <h1>Notifications</h1>
       </div>
-      <div class=" col-2 text-end mt-3">
-        <button class="btn btn-primary  " (click)="backtopage()">Back</button>
+      <div class="col-2 text-end mt-3">
+        <button class="btn btn-primary" (click)="backtopage()">Back</button>
       </div>
     </div>
   </div>
+  <div class="container mt-3">
+    <form [formGroup]="searchForm">
+      <div class="row">
+        <!-- Search Input -->
+        <div class="col-md-3">
+          <div class="form-group text-start">
+            <label for="search" class="visually-hidden">Search</label>
+            <input type="text" class="form-control form-control-sm" id="search" formControlName="searchTerm" placeholder="Search...">
+          </div>
+        </div>
 
+        <!-- Date Picker -->
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="date" class="visually-hidden">Date</label>
+            <div class="input-group input-group-sm">
+              <input type="date" class="form-control" id="date" formControlName="date" aria-describedby="date-icon">
+              <span class="input-group-text" id="date-icon"><i class="fa fa-calendar"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
   <div class="card-body overflow-hidden">
-    <table *ngIf="callbackRequests.length > 0" class="table">
+    <table *ngIf="filteredCallbackRequests.length > 0" class="table">
       <thead>
         <tr>
           <th scope="col">Created At</th>
@@ -172,8 +194,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let request of callbackRequests">
-          <td>{{ request.created_at  | date:'medium'}}</td>
+        <tr *ngFor="let request of filteredCallbackRequests">
+          <td>{{ request.created_at | date }}</td>
           <td>{{ request.full_name }}</td>
           <td>{{ request.email }}</td>
           <td>{{ request.phone }}</td>
@@ -191,8 +213,9 @@
     </div>
 
     <!-- Placeholder for empty state if no data -->
-    <div *ngIf="callbackRequests.length === 0 && !isLoading" class="text-center">
+    <div *ngIf="filteredCallbackRequests.length === 0 && !isLoading" class="text-center">
       No callback requests found.
     </div>
   </div>
 </div>
+

@@ -11,6 +11,7 @@ import { HtmlComponent } from './html/html.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomealertComponent } from './homealert/homealert.component';
 import { AngularComponent } from './angular/angular.component';
+import { TypescriptComponent } from './typescript/typescript.component';
 
 
 @NgModule({
@@ -18,7 +19,9 @@ import { AngularComponent } from './angular/angular.component';
     NotfoundComponent,
     HtmlComponent,
     HomealertComponent,
-    AngularComponent
+    AngularComponent,
+    TypescriptComponent
+
     
   ],
   imports: [
