@@ -2,7 +2,7 @@
 
 h3 {
     animation: text-shadow 1.5s ease-in-out infinite;
-    font-size: 5em;
+    font-size: 4em;
     font-weight: 900;
     line-height: 1;
 }
@@ -47,7 +47,7 @@ a:hover {
             0 0.125em 0 #fefc4b;
     }
     
-   60% {
+    60% {
         transform: translateY(-0.25em);
         text-shadow: 
             0 0.03125em 0 #0c2ffb, 
@@ -66,9 +66,77 @@ a:hover {
     }
 }
 
+.text-shadow-animation {
+    display: inline-block;
+    animation: text-shadow 2s infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
     * {
-      animation: none !important;
-      transition: none !important;
+        animation: none !important;
+        transition: none !important;
     }
 }
+
+
+.invoice-box {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    margin: auto;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    color: black;
+    background: white;
+    border-radius: 5px;
+  }
+  
+  @media (max-width: 1200px) {
+    .invoice-box {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .invoice-box {
+      font-size: 12px;
+    }
+    .invoice-box .form-group label {
+      font-size: 14px;
+    }
+    .invoice-box .form-group input,
+    .invoice-box .form-group textarea {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .invoice-box {
+      font-size: 12px;
+      padding: 20px;
+    }
+    .invoice-box .form-group label {
+      font-size: 12px;
+    }
+    .invoice-box .form-group input,
+    .invoice-box .form-group textarea {
+      font-size: 12px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .invoice-box {
+      font-size: 10px;
+      padding: 15px;
+    }
+    .invoice-box .form-group label {
+      font-size: 10px;
+    }
+    .invoice-box .form-group input,
+    .invoice-box .form-group textarea {
+      font-size: 10px;
+    }
+  }
+  
