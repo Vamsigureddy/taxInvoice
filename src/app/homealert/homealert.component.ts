@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TemplateService } from '../services/templateservices';
 import { InvoiceService } from '../services/invoice.service';
 import { DatePipe } from '@angular/common';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 export interface Item {
   item: string;
@@ -14,6 +15,14 @@ export interface Item {
   totalAmount: number;
   
 }
+export interface CallbackRequest {
+  created_at: Date;
+  full_name: string;
+  email: string;
+  phone: string;
+  requirement: string;
+  location: string;
+}
 @Component({
   selector: 'app-homealert',
   templateUrl: './homealert.component.html',
@@ -22,10 +31,12 @@ export interface Item {
 
 })
 export class HomealertComponent implements OnInit{
-  showNotificationModal: boolean = false;
-  callbackRequests: any[] = [];
+  callbackRequests: CallbackRequest[] = [];
   isLoading: boolean = false;
+  searchForm: FormGroup;
+  showNotificationModal: boolean = false;
   sortedCallbackRequests: any[] = [];
+  filteredCallbackRequests: CallbackRequest[] = [];
 
   fullName: string = '';
   dateOfBirth: string = '';
@@ -49,17 +60,42 @@ export class HomealertComponent implements OnInit{
     location: true
   };
   constructor(private dataService: TaxDataservieService, private router: Router,private sharedService:TemplateService,
-    private callbackService:InvoiceService,private route: ActivatedRoute,
+    private callbackService:InvoiceService,private route: ActivatedRoute,    private fb: FormBuilder,
+
    ) { }
 
 
-  ngOnInit() {
-    this.sortedCallbackRequests = [...this.callbackRequests];
+   ngOnInit() {
+    // Initialize the search form
+    this.searchForm = this.fb.group({
+      searchTerm: [''],
+      date: ['']
+    });
+  
+    // Fetch callback requests from the service
+    this.callbackService.getCallbackRequests().subscribe(
+      (data) => {
+        this.callbackRequests = data;
+        this.filteredCallbackRequests = [...this.callbackRequests]; // Initialize filtered data
+        this.filterInvoices(); // Apply initial filtering
+      },
+      (error) => {
+        console.error('Error fetching callback requests:', error);
+      }
+    );
+  
+    // Apply filtering based on form value changes
+    this.searchForm.valueChanges.subscribe(() => {
+      this.filterInvoices();
+    });
+  
+    // Fetch invoice details based on route params
     this.route.params.subscribe((params: any) => {
       const invoiceId = params['id'];
       this.fetchInvoiceDetails(invoiceId);
     });
   }
+  
 calculateItemAmounts(item: Item) {
   if (item.price !== null && item.qty !== null) {
     // Calculate taxAmount and totalAmount based on item price, quantity, and tax rate
@@ -189,5 +225,24 @@ backtopage(){
   this.showNotificationModal = false;
 
 }
+filterInvoices() {
+  const searchTerm = this.searchForm.get('searchTerm')?.value.toLowerCase();
+  const selectedDate = this.searchForm.get('date')?.value;
 
+  this.filteredCallbackRequests = this.callbackRequests.filter(request => {
+    const matchesSearch = searchTerm ? (
+      request.full_name.toLowerCase().includes(searchTerm) ||
+      request.email.toLowerCase().includes(searchTerm) ||
+      request.phone.includes(searchTerm) ||
+      request.requirement.toLowerCase().includes(searchTerm) ||
+      request.location.toLowerCase().includes(searchTerm)
+    ) : true;
+
+    const matchesDate = selectedDate ? (
+      new Date(request.created_at).toLocaleDateString() === new Date(selectedDate).toLocaleDateString()
+    ) : true;
+
+    return matchesSearch && matchesDate;
+  });
+}
 }

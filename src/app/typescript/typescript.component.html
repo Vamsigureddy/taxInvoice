@@ -1,15 +1,38 @@
-<div class="card h-100 mx-4 full-screen-card " >
-  <div class="card-header bg-success text-white sticky-top ">
+<div class="card h-100 mx-4 full-screen-card">
+  <div class="card-header bg-success text-white sticky-top">
     <div class="row">
       <div class="col-10 mt-1 text-center animated-text">
-        <span>Customers Booking  History</span>
+        <span>Customers Booking History</span>
       </div>
       <div class="col-2 text-end">
         <input type="button" value="Home" class="btn btn-info text-white" routerLink="/tax-form">
       </div>
     </div>
   </div>
-  
+  <div class="container mt-3">
+    <form [formGroup]="searchForm">
+      <div class="row">
+        <!-- Search Input -->
+        <div class="col-md-3">
+          <div class="form-group text-start">
+            <label for="search" class="visually-hidden">Search</label>
+            <input type="text" class="form-control form-control-sm" id="search" formControlName="searchTerm" placeholder="Search...">
+          </div>
+        </div>
+
+        <!-- Date Picker -->
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="date" class="visually-hidden">Date</label>
+            <div class="input-group input-group-sm">
+              <input type="date" class="form-control" id="date" formControlName="date" aria-describedby="date-icon">
+              <span class="input-group-text" id="date-icon"><i class="fa fa-calendar"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
   <div class="card-body overflow-auto">
     <table class="table table-bordered">
       <thead>
@@ -23,7 +46,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let invoice of invoices; let index = index">
+        <tr *ngFor="let invoice of filteredInvoices; let index = index">
           <td class="text-center">{{ index + 1 }}</td>
           <td class="text-center">{{ invoice.date_of_birth | date }}</td>
           <td class="text-center">{{ invoice.full_name }}</td>
@@ -37,8 +60,8 @@
       </tbody>
     </table>
   </div>
-  
-  <div *ngIf="invoices.length === 0" class="text-center">
+
+  <div *ngIf="filteredInvoices.length === 0" class="text-center">
     <p>No invoices found.</p>
   </div>
 </div>

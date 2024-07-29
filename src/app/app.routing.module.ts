@@ -34,7 +34,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    TypescriptComponent,
     HeaderComponent,
     FooterComponent,
     CarouselComponent,
