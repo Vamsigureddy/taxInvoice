@@ -38,7 +38,7 @@ export class TypescriptComponent implements OnInit{
   }
   viewRecord(invoice: any) {
     const invoiceId = invoice.id; // Replace with your actual invoice ID or index
-    this.router.navigate(['/html-training', invoiceId]);
+    this.router.navigate(['/user-invoice', invoiceId]);
   }
   deleteRecord(index:any){
 
