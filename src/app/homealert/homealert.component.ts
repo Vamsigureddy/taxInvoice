@@ -163,7 +163,7 @@ saveData() {
   };
 
   this.sharedService.setFormData(formData);
-  this.router.navigate(['/html-training']);
+  this.router.navigate(['/user-invoice']);
 }
 revarce() {
   this.router.navigate(['/not-found']);

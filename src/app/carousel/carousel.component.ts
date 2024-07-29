@@ -10,6 +10,6 @@ export class CarouselComponent {
   constructor(private router: Router) {}
 
   userDetails(){
-    this.router.navigate(['/angular-training']);
+    this.router.navigate(['/user-requirement']);
     }
 }

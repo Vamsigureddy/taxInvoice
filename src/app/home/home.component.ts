@@ -41,6 +41,6 @@ export class HomeComponent implements OnInit{
     });
   }
   userDetails(){
-    this.router.navigate(['/angular-training']);
+    this.router.navigate(['/user-requirement']);
     }
 }

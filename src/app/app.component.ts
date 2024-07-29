@@ -30,12 +30,12 @@ ngAfterViewInit() {
 }
 
 checkUrl(url: string) {
-  this.showHeaderAndFooter = !url.includes('/html-training') &&
+  this.showHeaderAndFooter = !url.includes('/user-invoice') &&
                              !url.includes('/not-found') &&
                              !url.includes('/tax-form') &&
                              !url.includes('/netcore-index.html')&&
                              !url.includes('/tax-history')&&
-                             !url.includes('/angular-training');
+                             !url.includes('/user-requirement');
 
 }
 }
