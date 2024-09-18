@@ -9,7 +9,7 @@ import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'taxInvoice';
   // showHeaderAndFooter = false;
-  showHeaderAndFooter = true;
+  showHeaderAndFooter = false;
   scrollProgress = 0;
   constructor(private router: Router) { }
 
