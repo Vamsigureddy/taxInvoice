@@ -1,5 +1,12 @@
 <div class="content">
     <app-header *ngIf="showHeaderAndFooter"></app-header>
+    
+    <!-- Progress bar below header -->
+  <div class="progress" style="height: 8px;
+    margin-top: 3.0rem;">
+    <div class="progress-bar" role="progressbar" [style.width.%]="scrollProgress" [attr.aria-valuenow]="scrollProgress"
+      aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
     <router-outlet></router-outlet>
     <app-footer *ngIf="showHeaderAndFooter"></app-footer>
   </div>

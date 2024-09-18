@@ -1,0 +1,11 @@
+.progress {
+    position: fixed;
+    top: 60px; /* Adjust based on your header height */
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .progress-bar {
+    background-color: #00ff37; /* Bootstrap's primary color, adjust as needed */
+  }
